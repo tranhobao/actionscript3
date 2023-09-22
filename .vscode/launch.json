@@ -1,0 +1,12 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "swf",
+            "request": "launch",
+            "name": "Launch Main",
+            "program": "bin/Main.swf",
+            "runtimeExecutable": "d:/flexairsdk/runtimes/player/32.0/flashplayer_debug.exe"
+        }
+    ]
+}
