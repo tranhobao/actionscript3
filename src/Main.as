@@ -6,6 +6,7 @@ package
 	import flash.events.*;
 	import flash.text.TextFormat;
 	import flash.system.System;
+	import mx.olap.aggregators.CountAggregator;
 
 
 	public class Main extends Sprite
@@ -19,11 +20,21 @@ package
 			var ary:Array = new Array(8,7,2,3,5,6);
 			var ary1:Array = new Array(16, 28, -16, -4, -13, 11, 28, 8, 10, 21, 4, 30, -7, -14);
 
+			var myString:String = "Viet Nam";
+			var myString1:String = "Tran Phi An Binh";
+			var myString2:String = "n";
+
+
 			compare(a,b);
 			chanLe(b);
 			timViTriPhanTu(ary);
 			kiemTraTonTai(ary);
 			timMaxMin(ary1);
+			chuyenChuHoa(myString);
+			daoChuoi(myString);
+			demSoLanXuatHien(myString1, myString2);
+			pftLastName(myString1);	
+			kyTuXuatHienNhieuNhat(myString1);		
 
 		}
 
@@ -104,5 +115,67 @@ package
 			trace("Gia tri max la = " + max);
 			trace("Gia tri min la = " + min);
 		}
+
+		public function chuyenChuHoa(myString:String):void
+		{
+			trace(myString.toLocaleUpperCase());
+		}
+
+		public function daoChuoi(myString:String):void
+		{
+			trace(myString.split("").reverse().join(""));
+		}
+
+
+		public function demSoLanXuatHien(myString1:String, myString2:String):void
+		{
+			var dem:int = 0;
+			for (var i:int = 0; i <= myString1.length; i++)
+			{
+				if (myString1.charAt(i) == "n")
+				{
+					dem++;
+				}
+			}
+			if (dem > 0)
+			{
+				trace("So lan xuat hien ky tu n cua chuoi s2 la: " + dem);
+			}
+			else 
+			{
+				trace("Khong co ky tu nao!!!")
+			}
+		}
+
+		public function pftLastName(myString1:String):void
+		{
+			trace(myString1.split(' ').slice(0, 1).join(' '));
+		}
+
+		public function kyTuXuatHienNhieuNhat(myString1:String):void
+		{
+			var dem:int, max:int;
+			var giatri:String = '';
+			var s:String = myString1.toLocaleLowerCase();
+
+			for (var i:int = 1; i < s.length; i++)
+			{
+				dem = 0;
+				for (var j:int = 0; j < s.length; j++)
+				{
+					if (s.charAt(i) == s.charAt(j))
+					{
+						dem++;
+					}
+					if (dem > max)
+					{
+						max = dem;
+						giatri = s.charAt(i);
+					}
+				}
+			}
+			trace("Ky tu xuat hien nhieu nhat trong chuoi la "+ giatri + " so lan " + max);
+		}
+
 	}
 }
