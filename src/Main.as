@@ -6,6 +6,7 @@ package
 	import flash.events.*;
 	import flash.text.TextFormat;
 	import flash.system.System;
+	import mx.olap.aggregators.CountAggregator;
 
 
 	public class Main extends Sprite
@@ -32,7 +33,8 @@ package
 			chuyenChuHoa(myString);
 			daoChuoi(myString);
 			demSoLanXuatHien(myString1, myString2);
-			pftLastName(myString1);			
+			pftLastName(myString1);	
+			kyTuXuatHienNhieuNhat(myString1);		
 
 		}
 
@@ -124,6 +126,7 @@ package
 			trace(myString.split("").reverse().join(""));
 		}
 
+
 		public function demSoLanXuatHien(myString1:String, myString2:String):void
 		{
 			var dem:int = 0;
@@ -149,6 +152,30 @@ package
 			trace(myString1.split(' ').slice(0, 1).join(' '));
 		}
 
+		public function kyTuXuatHienNhieuNhat(myString1:String):void
+		{
+			var dem:int, max:int;
+			var giatri:String = '';
+			var s:String = myString1.toLocaleLowerCase();
+
+			for (var i:int = 1; i < s.length; i++)
+			{
+				dem = 0;
+				for (var j:int = 0; j < s.length; j++)
+				{
+					if (s.charAt(i) == s.charAt(j))
+					{
+						dem++;
+					}
+					if (dem > max)
+					{
+						max = dem;
+						giatri = s.charAt(i);
+					}
+				}
+			}
+			trace("Ky tu xuat hien nhieu nhat trong chuoi la "+ giatri + " so lan " + max);
+		}
 
 	}
 }
